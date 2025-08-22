@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site QRCODE</title>
+</head>
+<body>
+    <div id="qrcode"></div>
+<button id="downloadBtn">Download PNG</button>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  const url = "https://dngroup.gr/";
+  
+  const qrcodeDiv = document.getElementById("qrcode");
+  const qr = new QRCode(qrcodeDiv, {
+    text: url,
+    width: 300,
+    height: 300,
+  });
+
+  // Download button
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    // The QR code is inside a canvas or an img, depending on library
+    const img = qrcodeDiv.querySelector('img') || qrcodeDiv.querySelector('canvas');
+    if (!img) return;
+
+    let src;
+    if (img.tagName === 'IMG') {
+      src = img.src; // PNG data URL
+    } else {
+      src = img.toDataURL("image/png");
+    }
+
+    // Create a temporary link to download
+    const a = document.createElement('a');
+    a.href = src;
+    a.download = 'qrcode.png';
+    a.click();
+  });
+</script>
+
+</body>
+</html>
