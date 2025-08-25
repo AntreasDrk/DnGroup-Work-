@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="app">
+        <!-- Scene 1: Hero -->
+        <section class="scene active" id="hero">
+            <video autoplay muted loop class="background-video">
+                <source src="assets/videos/hotel-lobby.mp4" type="video/mp4">
+            </video>
+            <div class="content">
+                <h1 class="title">Outfitting the Modern <br>Hotel Ecosystem</h1>
+                <p class="subtitle">Custom prints and embroidery for every team, every touchpoint.</p>
+            </div>
+        </section>
+
+        <!-- Scene 2: Front Desk -->
+        <section class="scene" id="front-desk">
+            <div class="background" style="background-image: url('assets/images/front-desk-bg.jpg');"></div>
+            <div class="product-image">
+                <img src="assets/products/receptionist-uniform.png" alt="Premium Receptionist Blouse">
+            </div>
+            <div class="content">
+                <h2>First Impressions Matter</h2>
+                <ul>
+                    <li>Elegant, professional polos and blouses</li>
+                    <li>Durable fabrics that stay crisp all day</li>
+                    <li>Precision embroidery for a flawless logo display</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ... Repeat for other scenes... -->
+
+        <!-- Scene 6: CTA -->
+        <section class="scene" id="cta">
+            <div class="content">
+                <h2>Let's Create Something Together</h2>
+                <p>Scan the code to view our full hospitality catalog and request a quote.</p>
+                <img src="assets/images/DN GROUP.png" alt="QR Code" class="qr-code">
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
