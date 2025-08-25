@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Company - Hotel Expo</title>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="hero">
+        <!-- Video Background - The Decorative Element -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="background-video">
+                <source src="assets/videos/857151-hd_1920_746_30fps.mp4" type="video/mp4">
+                <!-- Always provide a fallback image -->
+                Your browser does not support the video tag.
+            </video>
+            <!-- Optional: A dark overlay to increase text contrast -->
+          <div class="video-overlay"></div>
+        </div>
+
+        <!-- Content Container - The Minimalist Focus -->
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="line">Crafting Identity for</span><span class="line">the Hotel World</span></h1>
+            <p class="hero-subtitle">Premium custom apparel and branding for every department, every detail.</p>
+            <!-- Subtle Call to Action -->
+            <div class="hero-cta">
+                <a href="#catalog" class="cta-button">Explore Our Solutions</a>
+            </div>
+        </div>
+
+        <!-- Subtle progress indicator (optional but pro) -->
+        <div class="scroll-indicator">
+            <div class="indicator-line"></div>
+        </div>
+    </section>
+
+    <!-- Subsequent sections would go here -->
+    <script src="script.js"></script>
+</body>
+</html>
