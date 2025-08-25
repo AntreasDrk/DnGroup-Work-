@@ -126,3 +126,89 @@ body {
     50% { opacity: 1; }
     100% { transform: translateY(20px); opacity: 0; }
 }
+
+/* --- NEW CSS FOR THE MULTI-SECTION APP --- */
+
+/* GLOBAL PROGRESS BAR */
+.global-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+}
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #d4af37; /* Use your accent color */
+    transition: width 0.1s linear;
+}
+
+/* NAVIGATION DOTS */
+.navigation-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.dot.active {
+    background-color: transparent;
+    border-color: #fff;
+    transform: scale(1.2);
+}
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* SECTION BASE STYLES */
+.section {
+    position: absolute; /* Stack all sections on top of each other */
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Start all sections as hidden */
+    pointer-events: none; /* Prevent interacting with hidden sections */
+    transition: opacity 0.3s ease;
+}
+.section.active {
+    opacity: 1;
+    pointer-events: all; /* Allow interaction only with the active section */
+}
+
+/* NAVIGATION BUTTONS */
+.section-navigation {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.nav-button {
+    padding: 0.8rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

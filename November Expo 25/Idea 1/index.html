@@ -13,7 +13,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="hero">
+    <!-- NEW: Global Progress Bar -->
+    <div class="global-progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- NEW: Navigation Dots -->
+    <div class="navigation-dots"></div>
+
+    <!-- YOUR OLD HERO SECTION - Now wrapped in a .section div -->
+    <section class="section active" id="hero" data-section-name="hero">
         <!-- Video Background - The Decorative Element -->
         <div class="video-container">
             <video autoplay muted loop playsinline class="background-video">
@@ -41,7 +50,31 @@
         </div>
     </section>
 
-    <!-- Subsequent sections would go here -->
+    <!-- NEW: Front Desk Section -->
+    <section class="section" id="front-desk" data-section-name="front-desk">
+        <div class="section-background">
+            <img src="assets/images/pexels-bertellifotografia-16120131.jpg" alt="Hotel Front Desk">
+        </div>
+        <div class="section-content">
+            <h2>First Impressions Matter</h2>
+            <p>Elegant, professional wear for your guest-facing teams.</p>
+            <div class="product-showcase">
+                <img src="assets/products/receptionist-uniform.png" class="product-img" alt="Receptionist Uniform">
+            </div>
+            <!-- NEW: In-section navigation buttons -->
+            <div class="section-navigation">
+                <button class="nav-button prev-section-button">Back</button>
+                <button class="nav-button next-section-button">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Add more sections here (Culinary, Housekeeping, etc.) -->
+    <section class="section" id="culinary" data-section-name="culinary">
+        <!-- ... Content for the culinary section ... -->
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
