@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="productsStyle.css">
 </head>
 <body>
     <!-- NEW: Global Progress Bar -->
@@ -40,7 +41,7 @@
             <p class="hero-subtitle">Premium custom apparel and branding for every department, every detail.</p>
             <!-- Subtle Call to Action -->
             <div class="hero-cta">
-                <a href="#catalog" class="cta-button">Explore Our Solutions</a>
+                <a href="#catalog" class="cta-button next-section-button">Explore Our Solutions</a>
             </div>
         </div>
 
@@ -55,12 +56,29 @@
         <div class="section-background">
             <img src="assets/images/pexels-bertellifotografia-16120131.jpg" alt="Hotel Front Desk">
         </div>
-        <div class="section-content">
-            <h2>First Impressions Matter</h2>
-            <p>Elegant, professional wear for your guest-facing teams.</p>
-            <div class="product-showcase">
-                <img src="assets/products/receptionist-uniform.png" class="product-img" alt="Receptionist Uniform">
+        <div class="section-content split-layout">
+
+            <!-- left side -->
+            <div class="text-column">
+                <h2>First Impressions Matter</h2>
+                <p>Make a lasting first impression with elegant and comfortable front desk attire. 
+                    Personalize with your hotel logo to convey professionalism and friendliness.
+                </p>
+                <ul class="benefits-list">
+                <li>Premium breathable fabrics</li>
+                <li>Crisp, durable embroidery</li>
+                <li>Tailored fit for a professional look</li>
+                </ul>
             </div>
+
+            <!-- right side -->
+             <div class="image-column">
+                <!-- Main product image -->
+                <img src="assets/images/reseptionistBlouse.png" class="product-img main" alt="Receptionist Blouse" data-role="main">
+                <!-- Small logo detail that appears on hover -->
+                <img src="assets/images/embroidedLogo.png" class="product-img detail" alt="Embroidered Logo Detail" data-role="detail">
+            </div>
+            
             <!-- NEW: In-section navigation buttons -->
             <div class="section-navigation">
                 <button class="nav-button prev-section-button">Back</button>
@@ -72,6 +90,58 @@
     <!-- NEW: Add more sections here (Culinary, Housekeeping, etc.) -->
     <section class="section" id="culinary" data-section-name="culinary">
         <!-- ... Content for the culinary section ... -->
+         <div class="section-background">
+            <img src="assets/images/pexels-javierbalseiro-33610262.jpg" alt="Hotel Culinary">
+        </div>
+        <div class="section-content split-layout">
+
+             <!-- left side -->
+            <div class="text-column">
+                <h2>Cook with Style and Quality</h2>
+                    <p>Safe, comfortable, and professional kitchen wear that combines protection with elegance. 
+                        Add your logo to strengthen your team’s brand image.
+                    </p>
+                <ul class="benefits-list">
+                    <li>Flame-Resistant & Breathable Fabrics</li>
+                    <li>Chef-Approved Design</li>
+                    <li>Crisp, Permanent Branding</li>
+                    <li>Stain-Resistant Materials</li>
+                </ul>
+            </div>
+
+            <!-- right side -->
+             <div class="image-column">
+                <!-- Main product image -->
+                <img src="assets/images/reseptionistBlouse.png" class="product-img main" alt="Chefs Uniform" data-role="main">
+                <!-- Small logo detail that appears on hover -->
+                <img src="assets/images/embroidedLogo.png" class="product-img detail" alt="Embroidered Logo Detail" data-role="detail">
+            </div>
+            
+            <!-- NEW: In-section navigation buttons -->
+            <div class="section-navigation">
+                <button class="nav-button prev-section-button">Back</button>
+                <button class="nav-button next-section-button">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="housekeeping" data-section-name="housekeeping">
+        <!-- ... Content for the housekeeping section ... -->
+         <div class="section-background">
+            <img src="assets/images/pexels-cottonbro-6466482.jpg" alt="Hotel Housekeeping">
+        </div>
+        <div class="section-content">
+            <h2>Clean, Comfortable, Professional</h2>
+            <p>Equip your housekeeping team with stylish and practical uniforms designed for comfort and efficiency. Personalize with your hotel logo to maintain a polished and cohesive look throughout your property.</p>
+            <div class="product-showcase">
+                <img src="assets/images/Barista Outfit.png" class="product-img" alt="Housekeeping Uniform">
+            </div>
+            <!-- NEW: In-section navigation buttons -->
+            <div class="section-navigation">
+                <button class="nav-button prev-section-button">Back</button>
+                <button class="nav-button next-section-button">Next</button>
+            </div>
+        </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

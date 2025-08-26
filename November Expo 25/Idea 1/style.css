@@ -191,6 +191,33 @@ body {
     pointer-events: all; /* Allow interaction only with the active section */
 }
 
+/* --- SECTION BACKGROUND STYLES --- */
+.section-background {
+    position: absolute; /* Make it fill its parent .section */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Push it behind the content */
+}
+
+/* Target images inside the background div */
+.section-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will now work correctly */
+    /* Optional: Add a filter to ensure text readability */
+    filter: brightness(0.7);
+}
+
+.product-showcase {
+    width: 50%;
+    margin: 20px 0px 0px 0px;
+}
+.product-showcase .product-img {
+    width: 100%;
+    height: 100%;
+}
 /* NAVIGATION BUTTONS */
 .section-navigation {
     position: absolute;
