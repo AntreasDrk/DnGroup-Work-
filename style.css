@@ -16,12 +16,11 @@ html {
  body {
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* Modern fallback */
+    height: 100dvh; 
     margin: 0;
     padding: 0;
-    overflow: hidden; /* This is now a secondary safety measure */
-    position: fixed; /* THIS IS THE KEY. Locks the body to the viewport. */
-    /* Optional: Debug styles to see it */
+    overflow: hidden; 
+    position: fixed; 
     font-family: 'Inter', sans-serif;
     color: #fff;
 }
@@ -96,7 +95,6 @@ html {
     color: #eeeeee; /* Slightly off-white for subtlety */
 }
 
-/* CTA Button Decoration */
 .hero-cta {
     margin-top: 2rem;
 }
@@ -142,8 +140,6 @@ html {
     50% { opacity: 1; }
     100% { transform: translateY(20px); opacity: 0; }
 }
-
-/* --- NEW CSS FOR THE MULTI-SECTION APP --- */
 
 /* GLOBAL PROGRESS BAR */
 .global-progress {
