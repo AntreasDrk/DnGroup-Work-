@@ -1,4 +1,4 @@
-
+"use-strict"
 
 // script.js - MASTER CONTROLLER
 document.addEventListener('DOMContentLoaded', () => {
