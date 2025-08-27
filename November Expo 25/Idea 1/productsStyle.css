@@ -28,6 +28,7 @@
     margin-right: 220px;
 }
 .product-img {
+    width: 400px;
     transition: all 0.7s ease;
     border-radius: 10px; /* Optional subtle rounded corners */
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Subtle depth */
@@ -44,14 +45,14 @@
     transform: scale(0.8) translate(50px, 50px);
     z-index: 3;
 }
-/* Hover effect to show the detail shot */
+/* Hover effect to show the detail shot
 .image-column:hover .product-img.main {
     filter: brightness(0.8);
 }
 .image-column:hover .product-img.detail {
     opacity: 1;
-    transform: scale(1) translate(40px, -80px); /* Position the detail shot */
-}
+    transform: scale(1) translate(40px, -80px); Position the detail shot
+} */
 
 .benefits-list {
     list-style: none;
@@ -67,4 +68,65 @@
     position: absolute;
     left: 0;
     color: #d4af37; /* Your accent color */
+}
+
+/* --- CAROUSEL STYLING --- */
+.image-column {
+    position: relative; /* This is key for positioning the arrows */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+/* Container for image slides */
+.image-slide {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+}
+.image-slide.active {
+    opacity: 1;
+    width: 400px;
+}
+
+/* Container for text slides */
+.text-slide {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    width: 100%;
+}
+.text-slide.active {
+    opacity: 1;
+}
+
+/* Carousel Arrow Buttons */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+.carousel-prev {
+    left: 10px;
+}
+.carousel-next {
+    right: 10px;
 }

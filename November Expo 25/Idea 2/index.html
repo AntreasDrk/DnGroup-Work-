@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Luxury Hotels - Branding Expo</title>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0F2B5B;
+            --primary-gold: #D4AF37;
+            --primary-cream: #F8F5F0;
+            --text-dark: #1a1a1a;
+            --text-light: #eeeeee;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: fixed;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background-color: var(--primary-dark);
+        }
+
+        /* --- HERO SECTION STYLES --- */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Video Background Decoration */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 43, 91, 0.4), rgba(15, 43, 91, 0.8));
+        }
+
+        /* Content Decoration */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                top: 30%;
+                right: -26%;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title .line {
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-weight: 300;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-light);
+        }
+
+        /* CTA Button Decoration */
+        .hero-cta {
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #ffffff;
+            color: var(--text-dark);
+        }
+
+        /* Scroll Indicator Decoration */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .indicator-line {
+            width: 1px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            animation: scrollLine 2s infinite ease-in-out;
+        }
+
+        @keyframes scrollLine {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
+
+        /* --- NEW CSS FOR THE MULTI-SECTION APP --- */
+
+        /* GLOBAL PROGRESS BAR */
+        .global-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary-gold);
+            transition: width 0.1s linear;
+        }
+
+        /* NAVIGATION DOTS */
+        .navigation-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.25);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background-color: transparent;
+            border-color: #fff;
+            transform: scale(1.2);
+        }
+        .dot:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .dot-label {
+            position: absolute;
+            right: 25px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .dot:hover .dot-label {
+            opacity: 1;
+        }
+
+        /* SECTION BASE STYLES */
+        .section {
+            position: absolute;
+            width: 100vw;
+            height: 100dvh;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .section.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* --- SECTION BACKGROUND STYLES --- */
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .section-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .product-showcase {
+            width: 50%;
+            margin: 20px 0px 0px 0px;
+        }
+        .product-showcase .product-img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* NAVIGATION BUTTONS */
+        .section-navigation {
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 100;
+        }
+        .nav-button {
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Progress indicator for current section */
+        .section-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .section-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-gold);
+            transition: width 0.1s linear;
+        }
+        
+        /* --- SPLIT LAYOUT --- */
+        .split-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        @media (max-width: 968px) {
+            .split-layout {
+                flex-direction: column;
+                justify-content: center;
+                padding: 2rem;
+            }
+            
+            .text-column, .image-column {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .text-column {
+                margin-bottom: 2rem !important;
+                text-align: center !important;
+            }
+            
+            .image-column {
+                max-width: 300px !important;
+            }
+            
+            .product-img {
+                width: 100% !important;
+                max-width: 300px !important;
+            }
+            
+            .navigation-dots {
+                right: 15px;
+            }
+            
+            .section-navigation {
+                padding: 0 1rem;
+            }
+            
+            .nav-button {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        .text-column, .image-column {
+            width: 45%;
+        }
+        .text-column {
+            text-align: left;
+            padding: 0 0 0 5%;
+        }
+
+        .text-column h2 {
+            margin: 0 0 20px 0;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-cream);
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .text-column p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* --- PRODUCT SHOWCASE STYLING --- */
+        .image-column {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            margin-right: 220px;
+        }
+        .product-img {
+            width: 400px;
+            transition: all 0.7s ease;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        .product-img.main {
+            width: 100%;
+            max-width: 400px;
+            z-index: 2;
+        }
+        .product-img.detail {
+            position: absolute;
+            width: 20%;
+            opacity: 0;
+            transform: scale(0.8) translate(50px, 50px);
+            z-index: 3;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .benefits-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 1rem;
+        }
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* --- CAROUSEL STYLING --- */
+        .image-column {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+        }
+
+        /* Container for image slides */
+        .image-slide {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+        .image-slide.active {
+            opacity: 1;
+            width: 400px;
+        }
+
+        /* Container for text slides */
+        .text-slide {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            width: 100%;
+        }
+        .text-slide.active {
+            opacity: 1;
+        }
+
+        /* Carousel Arrow Buttons */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .carousel-prev {
+            left: 10px;
+        }
+        .carousel-next {
+            right: 10px;
+        }
+        
+        /* Carousel indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicator.active {
+            background: var(--primary-gold);
+            transform: scale(1.3);
+        }
+        
+        /* Loading spinner for images */
+        .image-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-gold);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Error fallback for images */
+        .image-fallback {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Department color coding */
+        .department-front-desk .accent-color {
+            color: #4A90E2;
+        }
+        .department-culinary .accent-color {
+            color: #D0021B;
+        }
+        .department-housekeeping .accent-color {
+            color: #7ED321;
+        }
+        
+        /* Section counter */
+        .section-counter {
+            position: fixed;
+            left: 30px;
+            top: 30px;
+            z-index: 1000;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Progress Bar -->
+    <div class="global-progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Section Counter -->
+    <div class="section-counter"><span id="current-section">1</span> of <span id="total-sections">4</span></div>
+
+    <!-- Navigation Dots -->
+    <div class="navigation-dots">
+        <!-- Dots will be generated by JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section active" id="hero" data-section-name="hero">
+        <!-- Video Background -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="background-video" poster="assets/images/hero-poster.jpg">
+                <source src="assets/videos/857151-hd_1920_746_30fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="line">Crafting Identity for</span><span class="line">the Hotel World</span></h1>
+            <p class="hero-subtitle">Premium custom apparel and branding for every department, every detail.</p>
+            <div class="hero-cta">
+                <a href="#catalog" class="cta-button next-section-button">Explore Our Solutions</a>
+            </div>
+        </div>
+
+        <!-- Progress indicator -->
+        <div class="scroll-indicator">
+            <div class="indicator-line"></div>
+        </div>
+        
+        <!-- Section progress bar -->
+        <div class="section-progress">
+            <div class="section-progress-bar"></div>
+        </div>
+    </section>
+
+    <!-- Front Desk Section -->
+    <section class="section department-front-desk" id="front-desk" data-section-name="front-desk">
+        <div class="section-background">
+            <img src="assets/images/pexels-bertellifotografia-16120131.jpg" alt="Hotel Front Desk">
+        </div>
+        <div class="section-content split-layout">
+
+            <!-- TEXT COLUMN -->
+            <div class="text-column">
+                <!-- Product 1 Text (Blouse) -->
+                <div class="text-slide active" data-slide-index="0">
+                    <h2>Elegant Blouses</h2>
+                    <p>Designed for comfort and professionalism during long shifts at the front desk.</p>
+                    <ul class="benefits-list">
+                        <li>Premium stretch cotton blend</li>
+                        <li>Wrinkle-resistant for a always-sharp look</li>
+                        <li>Precision embroidery on the chest</li>
+                    </ul>
+                </div>
+                <!-- Product 2 Text (Blazer) -->
+                <div class="text-slide" data-slide-index="1">
+                    <h2>Tailored Blazers</h2>
+                    <p>For managers and supervisors, projecting authority and style.</p>
+                    <ul class="benefits-list">
+                        <li>Premium wool-blend fabric</li>
+                        <li>Custom-fit tailoring available</li>
+                        <li>Internal pen pocket and discreet logo placement</li>
+                    </ul>
+                </div>
+                <!-- Product 3 Text (Polo) -->
+                <div class="text-slide" data-slide-index="2">
+                    <h2>Classic Polo Shirts</h2>
+                    <p>The perfect balance of comfort and formality for resort and spa settings.</p>
+                    <ul class="benefits-list">
+                        <li>Moisture-wicking performance fabric</li>
+                        <li>Modern, athletic fit</li>
+                        <li>Vibrant, long-lasting printed logos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IMAGE COLUMN -->
+            <div class="image-column">
+                <!-- Loading indicator -->
+                <div class="image-loading" style="display: none;"></div>
+                
+                <!-- Product 1 Image (Blouse) -->
+                <div class="image-slide active" data-slide-index="0">
+                    <img src="assets/images/reseptionistBlouse.png" class="product-img" alt="Receptionist Blouse" onerror="this.style.display='none'; this.parentElement.querySelector('.image-fallback').style.display='flex';">
+                    <div class="image-fallback" style="display: none;">Receptionist Blouse Image</div>
+                </div>
+                <!-- Product 2 Image (Blazer) -->
+                <div class="image-slide" data-slide-index="1">
+                    <img src="assets/images/blazers.jpg" class="product-img" alt="Manager Blazer" onerror="this.style.display='none'; this.parentElement.querySelector('.image-fallback').style.display='flex';">
+                    <div class="image-fallback" style="display: none;">Manager Blazer Image</div>
+                </div>
+                <!-- Product 3 Image (Polo) -->
+                <div class="image-slide" data-slide-index="2">
+                    <img src="assets/images/valet polo.jpg" class="product-img" alt="Valet Polo Shirt" onerror="this.style.display='none'; this.parentElement.querySelector('.image-fallback').style.display='flex';">
+                    <div class="image-fallback" style="display: none;">Valet Polo Shirt Image</div>
+                </div>
+
+                <!-- CAROUSEL NAVIGATION ARROWS -->
+                <button class="carousel-arrow carousel-prev" aria-label="Previous product">&#10094;</button>
+                <button class="carousel-arrow carousel-next" aria-label="Next product">&#10095;</button>
+                
+                <!-- Carousel indicators -->
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active" data-slide-index="0"></div>
+                    <div class="carousel-indicator" data-slide-index="1"></div>
+                    <div class="carousel-indicator" data-slide-index="2"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section progress bar -->
+        <div class="section-progress">
+            <div class="section-progress-bar"></div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="section-navigation">
+            <button class="nav-button prev-section-button">Back</button>
+            <button class="nav-button next-section-button">Next</button>
+        </div>
+    </section>
+
+    <!-- Culinary Section -->
+    <section class="section department-culinary" id="culinary" data-section-name="culinary">
+        <div class="section-background">
+            <img src="assets/images/pexels-javierbalseiro-33610262.jpg" alt="Hotel Culinary">
+        </div>
+        <div class="section-content split-layout">
+            <div class="text-column">
+                <div class="text-slide active">
+                    <h2>Cook with Style and Quality</h2>
+                    <p>Safe, comfortable, and professional kitchen wear designed for the demands of a busy hotel kitchen.</p>
+                    <ul class="benefits-list">
+                        <li>Flame-Resistant & Breathable Fabrics</li>
+                        <li>Chef-Approved Design</li>
+                        <li>Crisp, Permanent Branding</li>
+                        <li>Stain-Resistant Materials</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="image-slide active">
+                    <img src="assets/images/Chefs Shirt.jpg" class="product-img" alt="Chefs Uniform" data-material="cotton" onerror="this.style.display='none'; this.parentElement.querySelector('.image-fallback').style.display='flex';">
+                    <div class="image-fallback" style="display: none;">Chef's Uniform Image</div>
+                </div>
+                <button class="carousel-arrow carousel-prev" aria-label="Previous product">&#10094;</button>
+                <button class="carousel-arrow carousel-next" aria-label="Next product">&#10095;</button>
+            </div>
+        </div>
+        
+        <!-- Section progress bar -->
+        <div class="section-progress">
+            <div class="section-progress-bar"></div>
+        </div>
+        
+        <div class="section-navigation">
+            <button class="nav-button prev-section-button">Back</button>
+            <button class="nav-button next-section-button">Next</button>
+        </div>
+    </section>
+
+    <!-- Housekeeping Section -->
+    <section class="section department-housekeeping" id="housekeeping" data-section-name="housekeeping">
+        <div class="section-background">
+            <img src="assets/images/pexels-cottonbro-6466482.jpg" alt="Hotel Housekeeping">
+        </div>
+        <div class="section-content split-layout">
+            <div class="text-column">
+                <h2>Clean, Comfortable, Professional</h2>
+                <p>Equip your housekeeping team with stylish and practical uniforms designed for comfort and efficiency. Personalize with your hotel logo to maintain a polished and cohesive look throughout your property.</p>
+                <ul class="benefits-list">
+                    <li>Durable, Easy-Care Fabrics</li>
+                    <li>Functional Pockets and Design</li>
+                    <li>Comfortable for All-Day Wear</li>
+                    <li>Custom Embroidery Options</li>
+                </ul>
+            </div>
+            <div class="image-column">
+                <img src="assets/images/Housekeeping apron.jpg" class="product-img main" alt="Housekeeping Uniform" data-role="main" onerror="this.style.display='none'; this.parentElement.querySelector('.image-fallback').style.display='flex';">
+                <img src="assets/images/embroidedLogo.png" class="product-img detail" alt="Embroidered Logo Detail" data-role="detail" onerror="this.style.display='none';">
+                <div class="image-fallback" style="display: none;">Housekeeping Uniform Image</div>
+            </div>
+        </div>
+        
+        <!-- Section progress bar -->
+        <div class="section-progress">
+            <div class="section-progress-bar"></div>
+        </div>
+        
+        <div class="section-navigation">
+            <button class="nav-button prev-section-button">Back</button>
+            <button class="nav-button next-section-button">Next</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // HotelSlideshow class to manage the entire presentation
+            class HotelSlideshow {
+                constructor() {
+                    this.sections = gsap.utils.toArray('.section');
+                    this.progressBar = document.querySelector('.progress-bar');
+                    this.nextButtons = gsap.utils.toArray('.next-section-button');
+                    this.prevButtons = gsap.utils.toArray('.prev-section-button');
+                    this.dots = [];
+                    this.autoPlayTimeout = null;
+                    this.isAutoPlaying = true;
+                    this.autoPlayDelay = 8000;
+                    this.currentSectionIndex = 0;
+                    this.masterProgressTween = null;
+                    this.ctx = null; // GSAP context for cleanup
+                    
+                    // Initialize the slideshow
+                    this.init();
+                }
+                
+                init() {
+                    // Create GSAP context for easier cleanup
+                    this.ctx = gsap.context(() => {
+                        this.createNavigationDots();
+                        this.setupEventListeners();
+                        this.setupCarousels();
+                        this.startAutoPlayCycle();
+                        this.updateSectionCounter();
+                    });
+                    
+                    // Set total sections count
+                    document.getElementById('total-sections').textContent = this.sections.length;
+                }
+                
+                createNavigationDots() {
+                    const dotsContainer = document.querySelector('.navigation-dots');
+                    const sectionNames = ['Hero', 'Front Desk', 'Culinary', 'Housekeeping'];
+                    
+                    this.sections.forEach((section, i) => {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        dot.setAttribute('aria-label', `Go to ${sectionNames[i]} section`);
+                        
+                        if (i === 0) dot.classList.add('active');
+                        
+                        dot.addEventListener('click', () => {
+                            this.pauseAutoPlay();
+                            this.goToSection(i);
+                        });
+                        
+                        // Add tooltip
+                        const tooltip = document.createElement('span');
+                        tooltip.classList.add('dot-label');
+                        tooltip.textContent = sectionNames[i];
+                        dot.appendChild(tooltip);
+                        
+                        dotsContainer.appendChild(dot);
+                        this.dots.push(dot);
+                    });
+                }
+                
+                setupEventListeners() {
+                    // Next buttons
+                    this.nextButtons.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.pauseAutoPlay();
+                            this.nextSection();
+                        });
+                    });
+                    
+                    // Previous buttons
+                    this.prevButtons.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.pauseAutoPlay();
+                            this.prevSection();
+                        });
+                    });
+                    
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        this.pauseAutoPlay();
+                        
+                        if (e.key === 'ArrowRight') {
+                            this.nextSection();
+                        } else if (e.key === 'ArrowLeft') {
+                            this.prevSection();
+                        } else if (e.key >= 1 && e.key <= this.sections.length) {
+                            this.goToSection(parseInt(e.key) - 1);
+                        }
+                    });
+                    
+                    // Pause autoplay on user interaction
+                    document.addEventListener('mousedown', () => this.pauseAutoPlay());
+                    document.addEventListener('touchstart', () => this.pauseAutoPlay());
+                    
+                    // Handle video autoplay
+                    this.setupVideoAutoplay();
+                }
+                
+                setupVideoAutoplay() {
+                    const video = document.querySelector('.background-video');
+                    if (video) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                // Show fallback image if video can't play
+                                video.style.display = 'none';
+                            });
+                        }
+                    }
+                }
+                
+                setupCarousels() {
+                    // Process each section individually
+                    this.sections.forEach(section => {
+                        const imageSlides = gsap.utils.toArray('.image-slide', section);
+                        const textSlides = gsap.utils.toArray('.text-slide', section);
+                        
+                        // Only setup carousel if slides exist
+                        if (imageSlides.length > 0) {
+                            const prevArrow = section.querySelector('.carousel-prev');
+                            const nextArrow = section.querySelector('.carousel-next');
+                            const indicators = gsap.utils.toArray('.carousel-indicator', section);
+                            let currentSlideIndex = 0;
+                            
+                            // Function to update carousel display
+                            const updateCarouselSlide = (newIndex) => {
+                                // Handle wrap-around for infinite loop
+                                if (newIndex < 0) newIndex = imageSlides.length - 1;
+                                if (newIndex >= imageSlides.length) newIndex = 0;
+                                
+                                // Animate out current slides
+                                gsap.to([imageSlides[currentSlideIndex], textSlides[currentSlideIndex]], {
+                                    opacity: 0,
+                                    duration: 0.5,
+                                    onComplete: () => {
+                                        imageSlides[currentSlideIndex].classList.remove('active');
+                                        if (textSlides[currentSlideIndex]) {
+                                            textSlides[currentSlideIndex].classList.remove('active');
+                                        }
+                                    }
+                                });
+                                
+                                // Animate in new slides
+                                gsap.fromTo([imageSlides[newIndex], textSlides[newIndex]], 
+                                    { opacity: 0 },
+                                    { 
+                                        opacity: 1, 
+                                        duration: 0.5,
+                                        onStart: () => {
+                                            imageSlides[newIndex].classList.add('active');
+                                            if (textSlides[newIndex]) {
+                                                textSlides[newIndex].classList.add('active');
+                                            }
+                                            currentSlideIndex = newIndex;
+                                            
+                                            // Update indicators
+                                            indicators.forEach((indicator, i) => {
+                                                indicator.classList.toggle('active', i === newIndex);
+                                            });
+                                        }
+                                    }
+                                );
+                            };
+                            
+                            // Add event listeners to arrows
+                            if (prevArrow && nextArrow) {
+                                prevArrow.addEventListener('click', () => updateCarouselSlide(currentSlideIndex - 1));
+                                nextArrow.addEventListener('click', () => updateCarouselSlide(currentSlideIndex + 1));
+                            }
+                            
+                            // Add event listeners to indicators
+                            indicators.forEach((indicator, index) => {
+                                indicator.addEventListener('click', () => updateCarouselSlide(index));
+                            });
+                            
+                            // Add touch support for mobile
+                            this.setupTouchCarousel(section, updateCarouselSlide, currentSlideIndex);
+                        }
+                    });
+                }
+                
+                setupTouchCarousel(section, updateFunction, currentIndex) {
+                    let startX = 0;
+                    let endX = 0;
+                    
+                    section.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                    }, { passive: true });
+                    
+                    section.addEventListener('touchend', (e) => {
+                        endX = e.changedTouches[0].clientX;
+                        const diff = startX - endX;
+                        
+                        // If swipe distance is significant
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                // Swipe left - next
+                                updateFunction(currentIndex + 1);
+                            } else {
+                                // Swipe right - previous
+                                updateFunction(currentIndex - 1);
+                            }
+                        }
+                    }, { passive: true });
+                }
+                
+                goToSection(index) {
+                    // If target is the same, do nothing
+                    if (index === this.currentSectionIndex) return;
+                    if (index < 0 || index >= this.sections.length) return;
+                    
+                    const currentSection = this.sections[this.currentSectionIndex];
+                    const nextSection = this.sections[index];
+                    
+                    // Kill any ongoing progress bar animation
+                    if (this.masterProgressTween) this.masterProgressTween.kill();
+                    
+                    // Create a timeline for the section transition
+                    let transitionTL = gsap.timeline();
+                    transitionTL.to(currentSection, { opacity: 0, duration: 0.8, ease: "power2.in" });
+                    transitionTL.to(nextSection, { opacity: 1, duration: 0.8, ease: "power2.out" }, "<+=0.2");
+                    
+                    // Update active classes and variables
+                    transitionTL.add(() => {
+                        currentSection.classList.remove('active');
+                        nextSection.classList.add('active');
+                        this.updateDots(index);
+                        this.currentSectionIndex = index;
+                        this.updateSectionCounter();
+                    }, "-=0.5");
+                    
+                    // Restart autoplay timer for the new section
+                    if (this.isAutoPlaying) {
+                        this.startAutoPlayCycle();
+                    }
+                }
+                
+                updateDots(newIndex) {
+                    this.dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === newIndex);
+                    });
+                }
+                
+                updateSectionCounter() {
+                    document.getElementById('current-section').textContent = this.currentSectionIndex + 1;
+                }
+                
+                nextSection() {
+                    let nextIndex = (this.currentSectionIndex + 1) % this.sections.length;
+                    this.goToSection(nextIndex);
+                }
+                
+                prevSection() {
+                    let prevIndex = this.currentSectionIndex - 1;
+                    if (prevIndex < 0) prevIndex = this.sections.length - 1;
+                    this.goToSection(prevIndex);
+                }
+                
+                startAutoPlayCycle() {
+                    this.pauseAutoPlay();
+                    
+                    // Reset all section progress bars
+                    gsap.utils.toArray('.section-progress-bar').forEach(bar => {
+                        gsap.set(bar, { width: "0%" });
+                    });
+                    
+                    // Animate the global progress bar
+                    this.masterProgressTween = gsap.fromTo(this.progressBar,
+                        { width: "0%" },
+                        { width: "100%", duration: this.autoPlayDelay / 1000, ease: "none" }
+                    );
+                    
+                    // Animate the current section's progress bar
+                    const currentSectionBar = this.sections[this.currentSectionIndex].querySelector('.section-progress-bar');
+                    if (currentSectionBar) {
+                        gsap.fromTo(currentSectionBar,
+                            { width: "0%" },
+                            { width: "100%", duration: this.autoPlayDelay / 1000, ease: "none" }
+                        );
+                    }
+                    
+                    // Set the timeout to go to the next section
+                    this.autoPlayTimeout = setTimeout(() => this.nextSection(), this.autoPlayDelay);
+                    this.isAutoPlaying = true;
+                }
+                
+                pauseAutoPlay() {
+                    clearTimeout(this.autoPlayTimeout);
+                    if (this.masterProgressTween) this.masterProgressTween.pause();
+                    this.isAutoPlaying = false;
+                }
+                
+                // Cleanup method to revert GSAP animations
+                destroy() {
+                    if (this.ctx) {
+                        this.ctx.revert();
+                    }
+                }
+            }
+            
+            // Initialize the slideshow
+            const hotelSlideshow = new HotelSlideshow();
+            
+            // Handle page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    hotelSlideshow.pauseAutoPlay();
+                } else if (hotelSlideshow.isAutoPlaying) {
+                    hotelSlideshow.startAutoPlayCycle();
+                }
+            });
+            
+            // Preload images for better performance
+            window.addEventListener('load', () => {
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    // Add error handling if not already present
+                    if (!img.hasAttribute('onerror')) {
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                            const fallback = this.parentElement.querySelector('.image-fallback');
+                            if (fallback) fallback.style.display = 'flex';
+                        };
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

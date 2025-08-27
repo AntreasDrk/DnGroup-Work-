@@ -58,26 +58,61 @@
         </div>
         <div class="section-content split-layout">
 
-            <!-- left side -->
-            <div class="text-column">
-                <h2>First Impressions Matter</h2>
-                <p>Make a lasting first impression with elegant and comfortable front desk attire. 
-                    Personalize with your hotel logo to convey professionalism and friendliness.
-                </p>
+            <!-- TEXT COLUMN: Will hold text for all products -->
+        <div class="text-column">
+            <!-- Product 1 Text (Blouse) - Initially Visible -->
+            <div class="text-slide active" data-slide-index="0">
+                <h2>Elegant Blouses</h2>
+                <p>Designed for comfort and professionalism during long shifts at the front desk.</p>
                 <ul class="benefits-list">
-                <li>Premium breathable fabrics</li>
-                <li>Crisp, durable embroidery</li>
-                <li>Tailored fit for a professional look</li>
+                    <li>Premium stretch cotton blend</li>
+                    <li>Wrinkle-resistant for a always-sharp look</li>
+                    <li>Precision embroidery on the chest</li>
                 </ul>
             </div>
-
-            <!-- right side -->
-             <div class="image-column">
-                <!-- Main product image -->
-                <img src="assets/images/reseptionistBlouse.png" class="product-img main" alt="Receptionist Blouse" data-role="main">
-                <!-- Small logo detail that appears on hover -->
-                <img src="assets/images/embroidedLogo.png" class="product-img detail" alt="Embroidered Logo Detail" data-role="detail">
+            <!-- Product 2 Text (Blazer) - Initially Hidden -->
+            <div class="text-slide" data-slide-index="1">
+                <h2>Tailored Blazers</h2>
+                <p>For managers and supervisors, projecting authority and style.</p>
+                <ul class="benefits-list">
+                    <li>Premium wool-blend fabric</li>
+                    <li>Custom-fit tailoring available</li>
+                    <li>Internal pen pocket and discreet logo placement</li>
+                </ul>
             </div>
+            <!-- Product 3 Text (Polo) - Initially Hidden -->
+            <div class="text-slide" data-slide-index="2">
+                <h2>Classic Polo Shirts</h2>
+                <p>The perfect balance of comfort and formality for resort and spa settings.</p>
+                <ul class="benefits-list">
+                    <li>Moisture-wicking performance fabric</li>
+                    <li>Modern, athletic fit</li>
+                    <li>Vibrant, long-lasting printed logos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- IMAGE COLUMN: Will hold images for all products -->
+        <div class="image-column">
+            <!-- Product 1 Image (Blouse) - Initially Visible -->
+            <div class="image-slide active" data-slide-index="0">
+                <img src="assets/images/reseptionistBlouse.png" class="product-img" alt="Receptionist Blouse">
+            </div>
+            <!-- Product 2 Image (Blazer) - Initially Hidden -->
+            <div class="image-slide" data-slide-index="1">
+                <img src="assets/images/blazers.jpg" class="product-img" alt Manager Blazer">
+            </div>
+            <!-- Product 3 Image (Polo) - Initially Hidden -->
+            <div class="image-slide" data-slide-index="2">
+                <img src="assets/images/valet polo.jpg" class="product-img" alt="Valet Polo Shirt">
+            </div>
+
+            <!-- CAROUSEL NAVIGATION ARROWS -->
+            <button class="carousel-arrow carousel-prev">&#10094;</button> <!-- Left arrow -->
+            <button class="carousel-arrow carousel-next">&#10095;</button> <!-- Right arrow -->
+        </div>
+
+    </div>
             
             <!-- NEW: In-section navigation buttons -->
             <div class="section-navigation">
@@ -88,19 +123,17 @@
     </section>
 
     <!-- NEW: Add more sections here (Culinary, Housekeeping, etc.) -->
-    <section class="section" id="culinary" data-section-name="culinary">
-        <!-- ... Content for the culinary section ... -->
-         <div class="section-background">
-            <img src="assets/images/pexels-javierbalseiro-33610262.jpg" alt="Hotel Culinary">
-        </div>
-        <div class="section-content split-layout">
-
-             <!-- left side -->
-            <div class="text-column">
+    <!-- In your Culinary section -->
+<section class="section" id="culinary" data-section-name="culinary">
+    <div class="section-background">
+        <img src="assets/images/pexels-javierbalseiro-33610262.jpg" alt="Hotel Culinary">
+    </div>
+    <div class="section-content split-layout">
+        <div class="text-column">
+            <!-- Add active class to first text slide -->
+            <div class="text-slide active">
                 <h2>Cook with Style and Quality</h2>
-                    <p>Safe, comfortable, and professional kitchen wear that combines protection with elegance. 
-                        Add your logo to strengthen your team’s brand image.
-                    </p>
+                <p>Safe, comfortable, and professional kitchen wear...</p>
                 <ul class="benefits-list">
                     <li>Flame-Resistant & Breathable Fabrics</li>
                     <li>Chef-Approved Design</li>
@@ -108,22 +141,22 @@
                     <li>Stain-Resistant Materials</li>
                 </ul>
             </div>
-
-            <!-- right side -->
-             <div class="image-column">
-                <!-- Main product image -->
-                <img src="assets/images/Chefs Shirt.jpg" class="product-img main" alt="Chefs Uniform" data-role="main">
-                <!-- Small logo detail that appears on hover -->
-                <img src="assets/images/embroidedLogo.png" class="product-img detail" alt="Embroidered Logo Detail" data-role="detail">
-            </div>
-            
-            <!-- NEW: In-section navigation buttons -->
-            <div class="section-navigation">
-                <button class="nav-button prev-section-button">Back</button>
-                <button class="nav-button next-section-button">Next</button>
-            </div>
         </div>
-    </section>
+        <div class="image-column">
+            <!-- Add active class to first image slide -->
+            <div class="image-slide active">
+                <img src="assets/images/Chefs Shirt.jpg" class="product-img" alt="Chefs Uniform" data-material="cotton">
+            </div>
+            <!-- Add carousel arrows -->
+            <button class="carousel-arrow carousel-prev">&#10094;</button>
+            <button class="carousel-arrow carousel-next">&#10095;</button>
+        </div>
+    </div>
+    <div class="section-navigation">
+        <button class="nav-button prev-section-button">Back</button>
+        <button class="nav-button next-section-button">Next</button>
+    </div>
+</section>
 
     <section class="section" id="housekeeping" data-section-name="housekeeping">
         <!-- ... Content for the housekeeping section ... -->

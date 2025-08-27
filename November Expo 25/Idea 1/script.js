@@ -20,13 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSectionIndex = 0;
     let masterProgressTween;
 
-    // --- INITIALIZATION ---
-    function init() {
-        createNavigationDots();
-        setupEventListeners();
-        startAutoPlayCycle(); // Start the automatic presentation
-    }
-
     // --- SETUP FUNCTIONS ---
     function createNavigationDots() {
         const dotsContainer = document.querySelector('.navigation-dots');
@@ -135,6 +128,72 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(autoPlayTimeout);
         if (masterProgressTween) masterProgressTween.pause(); // Also pause the progress bar animation
         isAutoPlaying = false;
+    }
+
+        // --- INTERNAL CAROUSEL FUNCTIONALITY ---
+    function setupCarousels() {
+        // Find all sections that might have a carousel
+        const sectionsWithCarousel = gsap.utils.toArray('.section .image-slide');
+
+        if (sectionsWithCarousel.length > 0) {
+            // Setup for each section individually
+            sectionsWithCarousel.forEach(section => {
+                const container = section.closest('.section');
+                const imageSlides = gsap.utils.toArray('.image-slide', container);
+                const textSlides = gsap.utils.toArray('.text-slide', container);
+                const prevArrow = container.querySelector('.carousel-prev');
+                const nextArrow = container.querySelector('.carousel-next');
+                let currentSlideIndex = 0;
+
+                // Function to update the carousel display
+                function updateCarouselSlide(newIndex) {
+                    // Handle wrap-around for infinite loop
+                    if (newIndex < 0) newIndex = imageSlides.length - 1;
+                    if (newIndex >= imageSlides.length) newIndex = 0;
+
+                    // Animate out the current active slides
+                    gsap.to([imageSlides[currentSlideIndex], textSlides[currentSlideIndex]], {
+                        opacity: 0,
+                        duration: 0.5,
+                        onComplete: () => {
+                            // Remove active class after fade out
+                            imageSlides[currentSlideIndex].classList.remove('active');
+                            textSlides[currentSlideIndex].classList.remove('active');
+                        }
+                    });
+
+                    // Animate in the new active slides
+                    gsap.fromTo([imageSlides[newIndex], textSlides[newIndex]], 
+                        { opacity: 0 },
+                        { 
+                            opacity: 1, 
+                            duration: 0.5,
+                            onStart: () => {
+                                // Add active class before fade in
+                                imageSlides[newIndex].classList.add('active');
+                                textSlides[newIndex].classList.add('active');
+                            }
+                        }
+                    );
+
+                    currentSlideIndex = newIndex;
+                }
+
+                // Add event listeners to the arrows
+                if (prevArrow && nextArrow) {
+                    prevArrow.addEventListener('click', () => updateCarouselSlide(currentSlideIndex - 1));
+                    nextArrow.addEventListener('click', () => updateCarouselSlide(currentSlideIndex + 1));
+                }
+            });
+        }
+    }
+
+    // --- Initialize everything ---
+    function init() {
+        createNavigationDots();
+        setupEventListeners();
+        setupCarousels(); // <- INITIALIZE THE CAROUSELS TOO!
+        startAutoPlayCycle();
     }
 
     // --- START THE SHOW! ---
