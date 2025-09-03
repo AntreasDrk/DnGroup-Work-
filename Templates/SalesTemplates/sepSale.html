@@ -13,26 +13,6 @@
         -webkit-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
       }
-      .title {
-        text-align: center;
-        padding: 15px 0;
-        background: #e67e22;
-        color: white;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      .apron-names {
-        text-align: center;
-        padding: 20px 0;
-        background: #f8f8f8;
-      }
-      .apron-name {
-        display: inline-block;
-        width: 45%;
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
-      }
       .apron-images {
         text-align: center;
         padding: 0 0 30px 0;
@@ -48,6 +28,7 @@
         border-radius: 5px;
         border: 1px solid #e0e0e0;
       }
+
       .buttons {
         text-align: center;
         padding: 30px 0;
@@ -103,35 +84,50 @@
     >
       <!-- Logo Section -->
       <tr>
-        <td height="139" ; style="text-align: center; padding: 0; background: #f8f8f8; border-radius: 8px">
-          <img
-            src="https://i.imgur.com/LqFcnAC.png"
-            alt="Company Logo"
-            width="600"
-            style="-ms-interpolation-mode: bicubic; border-top-left-radius: 8px; border-top-right-radius: 8px; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none"
-          />
+        <td style="text-align: center; height: 139px; padding: 0; background: #f8f8f8; border-radius: 8px">
+          <img src="https://i.imgur.com/LqFcnAC.png" alt="Company Logo" width="600" style="-ms-interpolation-mode: bicubic; display: block; border-top-left-radius: 8px; border-top-right-radius: 8px; height: auto; border: 0; outline: none" />
         </td>
       </tr>
 
       <!-- Title Section -->
       <tr>
-        <td class="title">SEPTEMBER SALES</td>
+        <td align="center" style="text-align: center; padding: 15px 0; background: #e67e22; color: white; font-size: 28px; font-weight: bold">SEPTEMBER SALES</td>
       </tr>
 
       <!-- Apron Names -->
+      <!-- Apron Section -->
       <tr>
-        <td class="apron-names">
-          <div class="apron-name">Classic Chef Apron</div>
-          <div class="apron-name">Modern Bib Apron</div>
+        <td align="center" valign="top" style="padding: 0; margin: 0">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <!-- LEFT COLUMN -->
+              <td width="50%" valign="top" style="padding: 10px; background: #f8f8f8">
+                <p style="margin: 0 0 10px 0; font-size: 20px; font-weight: bold; color: #333">Classic Chef Apron</p>
+                <img src="https://i.imgur.com/nlm9GsM.jpeg" alt="Classic Chef Apron" width="250" height="380px" style="display: block; border: 0; outline: none; text-decoration: none" />
+              </td>
+
+              <!-- RIGHT COLUMN -->
+              <td width="50%" valign="center" style="padding: 10px; background: #ffffff">
+                <p style="margin: 0 0 10px 0; font-size: 14px; color: #333; line-height: 1.5">dadadadasdasdasdasdasdasdas adasdasdas</p>
+                <p style="margin: 0 0 10px 0; font-size: 14px; color: #333; line-height: 1.5">dadadadasdasdasdasdasdasdas adasdasdas</p>
+                <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.5">dadadadasdasdasdasdasdasdas adasdasdas</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" style="text-align: right; padding: 20px 0; background: #f8f8f8">
+          <p style="display: inline-block; width: 45%; font-size: 20px; font-weight: bold; color: #333">Modern Bib Apron</p>
         </td>
       </tr>
 
       <!-- Apron Images -->
+      <!-- IMPORTANT -->
       <tr>
         <td class="apron-images">
-          <div class="apron-image">
-            <img src="https://via.placeholder.com/250x300/f4f4f4/333333?text=Classic+Chef+Apron" alt="Classic Chef Apron" />
-          </div>
+          <div class="apron-image"></div>
           <div class="apron-image">
             <img src="https://via.placeholder.com/250x300/f4f4f4/333333?text=Modern+Bib+Apron" alt="Modern Bib Apron" />
           </div>
